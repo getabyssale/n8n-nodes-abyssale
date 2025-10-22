@@ -1,0 +1,50 @@
+{
+	"name": "n8n-nodes-abyssale",
+	"version": "1.0.0",
+	"description": "Transform one design into hundreds of on-brand assets across all marketing channels.",
+	"license": "MIT",
+	"homepage": "https://www.abyssale.com/",
+	"keywords": [
+		"n8n-community-node-package"
+	],
+	"author": {
+		"name": "remyLmnr",
+		"email": "r.lemeunier@abyssale.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/getabyssale/n8n-nodes-abyssale.git"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"nodes/Abyssale/AbyssaleApi.credentials.ts"
+		],
+		"nodes": [
+			"nodes/Abyssale/Abyssale.node.ts"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "*",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^19.0.4",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}

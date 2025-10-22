@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-abyssale",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Marketing", "Automation"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://developers.abyssale.com/rest-api/authentication"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://developers.abyssale.com/"
+			}
+		]
+	}
+}
