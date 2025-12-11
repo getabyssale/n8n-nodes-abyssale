@@ -31,10 +31,11 @@
 		"n8nNodesApiVersion": 1,
 		"strict": true,
 		"credentials": [
-			"nodes/Abyssale/AbyssaleApi.credentials.ts"
+			"dist/nodes/Abyssale/AbyssaleApi.credentials.js"
 		],
 		"nodes": [
-			"nodes/Abyssale/Abyssale.node.ts"
+			"dist/nodes/Abyssale/Abyssale.node.js",
+			"dist/nodes/Abyssale/AbyssaleTrigger.node.js"
 		]
 	},
 	"devDependencies": {
