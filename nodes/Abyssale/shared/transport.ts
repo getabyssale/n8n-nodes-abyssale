@@ -20,6 +20,7 @@ export async function abyssaleApiRequest(
     const options: IHttpRequestOptions = {
         headers: {
             Accept: 'application/json',
+						"X-Referer": "n8n",
             ...headers,
         },
         method,
