@@ -209,7 +209,7 @@ export class Abyssale implements INodeType {
 				if (resource === 'banner' && ["generateSingle", "generateMultiFormatImages", "generateHTML5BannerAds", "generateMultiFormatVideos", "generateMultiFormatGIFs", "generateMultiFormatPDFs"].includes(operation)) {
 					const designId = this.getNodeParameter('designId', i) as string;
 					const designFormat = this.getNodeParameter('designFormat', i, "") as string;
-					const designFormats = this.getNodeParameter('designFormats', i, "") as string;
+					const designFormats = this.getNodeParameter('designFormats', i, []) as string[];
 					const imageFileType = this.getNodeParameter('imageFileType', i, "") as string;
 					const root = this.getNodeParameter('root', i, "") as string; // root background_color
 					const textElements = this.getNodeParameter('textElements', i, []) as IDataObject;
@@ -260,7 +260,7 @@ export class Abyssale implements INodeType {
 						body["template_format_name"] = designFormat
 					}
 					// Only for multiple banners generation
-					if (designFormats) {
+					if (designFormats.length) {
 						body["template_format_names"] = designFormats
 					}
 
