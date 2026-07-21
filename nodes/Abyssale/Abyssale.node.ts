@@ -1,5 +1,7 @@
 import {
 	NodeConnectionTypes,
+	NodeOperationError,
+	validateFieldType,
 	type INodeType,
 	type INodeTypeDescription,
 	IExecuteFunctions,
@@ -232,10 +234,10 @@ export class Abyssale implements INodeType {
 					const simplify = this.getNodeParameter('simplify', i, false) as boolean;
 
 					const body = {
-						elements: {} as Record<string, Record<string, string>>,
+						elements: {} as Record<string, IDataObject>,
 					} as IDataObject;
 
-					const elements = body.elements as Record<string, Record<string, string>>
+					const elements = body.elements as Record<string, IDataObject>
 
 					if (operation == "generateHTML5BannerAds") {
 						body["image_file_type"] = "html5"
@@ -313,7 +315,33 @@ export class Abyssale implements INodeType {
 							elements[elementId] = {};
 
 							if (imageElement.image_url) {
+								const validation = validateFieldType('image_url', imageElement.image_url, 'url');
+								if (!validation.valid) {
+									throw new NodeOperationError(this.getNode(), validation.errorMessage);
+								}
 								elements[elementId]["image_url"] = imageElement.image_url;
+							}
+
+							const textToImageProps = (imageElement.textToImage as IDataObject)?.properties as IDataObject | undefined;
+							if (textToImageProps?.prompt) {
+								elements[elementId]["text_to_image"] = true;
+								const textToImageProperties: IDataObject = { prompt: textToImageProps.prompt };
+
+								const inpaintImages = ((textToImageProps.inpaint_images as string[]) ?? []).filter((url) => url);
+								if (inpaintImages.length) {
+									if (inpaintImages.length > 4) {
+										throw new NodeOperationError(this.getNode(), `Image element "${elementId}": provide at most 4 inpaint images (got ${inpaintImages.length}).`);
+									}
+									for (const url of inpaintImages) {
+										const validation = validateFieldType('inpaint_images', url, 'url');
+										if (!validation.valid) {
+											throw new NodeOperationError(this.getNode(), validation.errorMessage);
+										}
+									}
+									textToImageProperties.inpaint_images = inpaintImages;
+								}
+
+								elements[elementId]["text_to_image_properties"] = textToImageProperties;
 							}
 						}
 					}
@@ -575,9 +603,6 @@ export class Abyssale implements INodeType {
 						pairedItem: i,
 					});
 				} else {
-					if (error.context) {
-						throw error.context;
-					}
 					throw error;
 				}
 			}
