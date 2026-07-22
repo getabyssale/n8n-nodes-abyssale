@@ -44,11 +44,10 @@ export const designProperties: INodeProperties[] = [
 	{
 		displayName: 'Design Formats Name or ID',
 		name: 'designFormats',
-		type: 'options',
+		type: 'multiOptions',
 		typeOptions: {
 			loadOptionsMethod: 'getDesignFormats',
 			loadOptionsDependsOn: ['designId'],
-			multipleValues: true,
 		},
 		displayOptions: {
 			show: {
@@ -56,9 +55,8 @@ export const designProperties: INodeProperties[] = [
 				operation: ['generateMultiFormatImages', 'generateHTML5BannerAds', 'generateMultiFormatVideos', 'generateMultiFormatGIFs', 'generateMultiFormatPDFs'],
 			},
 		},
-		required: true,
-		default: '',
-		description: 'Select design formats to use for generation. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+		default: [],
+		description: 'Select design formats to use for generation. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Leave empty to generate all formats of the design.',
 	},
 ]
 

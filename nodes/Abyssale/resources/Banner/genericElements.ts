@@ -153,8 +153,48 @@ export const genericElements: INodeProperties[] = [
 						name: 'image_url',
 						type: 'string',
 						default: '',
-						description: 'Public HTTP(s) URL of the image (i.e. https://example.com/image.png).',
-						validateType: 'url',
+						description: 'Public HTTP(s) URL of the image (i.e. https://example.com/image.png). Provide either this or Text to Image.',
+					},
+					{
+						displayName: 'Text to Image',
+						name: 'textToImage',
+						type: 'fixedCollection',
+						typeOptions: { multipleValues: false },
+						placeholder: 'Add Text to Image Prompt',
+						default: {},
+						description: 'Generate the image from an AI prompt. Provide either this or Image URL.',
+						displayOptions: {
+							show: {
+								'/operation': ['generateMultiFormatImages', 'generateHTML5BannerAds', 'generateMultiFormatVideos', 'generateMultiFormatGIFs', 'generateMultiFormatPDFs'],
+							},
+						},
+						options: [
+							{
+								name: 'properties',
+								displayName: 'Properties',
+								values: [
+									{
+										displayName: 'Prompt',
+										name: 'prompt',
+										type: 'string',
+										default: '',
+										description: 'AI prompt used to generate the image',
+									},
+									{
+										displayName: 'Inpaint Images (URLs)',
+										name: 'inpaint_images',
+										type: 'string',
+										default: [],
+										typeOptions: {
+											multipleValues: true,
+											multipleValueButtonText: 'Add Image',
+											maxValue: 4,
+										},
+										description: 'Up to 4 public HTTP(s) image URLs used as inpaint references alongside the Prompt',
+									},
+								],
+							},
+						],
 					},
 				],
 			},
