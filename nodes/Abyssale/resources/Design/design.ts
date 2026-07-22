@@ -42,7 +42,7 @@ export const designProperties: INodeProperties[] = [
 
 	// Design multi format selection
 	{
-		displayName: 'Design Formats Name or ID',
+		displayName: 'Design Formats Names or IDs',
 		name: 'designFormats',
 		type: 'multiOptions',
 		typeOptions: {
@@ -56,7 +56,7 @@ export const designProperties: INodeProperties[] = [
 			},
 		},
 		default: [],
-		description: 'Select design formats to use for generation. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Leave empty to generate all formats of the design.',
+		description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 ]
 
