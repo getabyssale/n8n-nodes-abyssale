@@ -1,8 +1,8 @@
 {
-	"node": "n8n-nodes-abyssale",
+	"node": "n8n-nodes-abyssale.abyssale",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": ["Marketing", "Automation"],
+	"categories": ["Marketing & Content", "Productivity"],
 	"resources": {
 		"credentialDocumentation": [
 			{
