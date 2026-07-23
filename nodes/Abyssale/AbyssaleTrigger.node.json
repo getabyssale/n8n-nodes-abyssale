@@ -1,17 +1,17 @@
 {
-  "node": "n8n-nodes-abyssaleTrigger",
+  "node": "n8n-nodes-abyssale.abyssaleTrigger",
   "nodeVersion": "1.0",
   "codexVersion": "1.0",
-  "categories": ["Development", "Developer Tools"],
+  "categories": ["Marketing & Content", "Productivity"],
   "resources": {
     "credentialDocumentation": [
       {
-        "url": "https://github.com/org/repo?tab=readme-ov-file#credentials"
+        "url": "https://developers.abyssale.com/rest-api/authentication"
       }
     ],
     "primaryDocumentation": [
       {
-        "url": "https://github.com/org/repo?tab=readme-ov-file"
+        "url": "https://developers.abyssale.com/"
       }
     ]
   }
