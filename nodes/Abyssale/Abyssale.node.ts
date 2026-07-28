@@ -1,9 +1,11 @@
 import {
+	NodeApiError,
 	NodeConnectionTypes,
 	NodeOperationError,
 	validateFieldType,
 	type INodeType,
 	type INodeTypeDescription,
+	type JsonObject,
 	IExecuteFunctions,
 	INodeExecutionData, IDataObject, ILoadOptionsFunctions, INodePropertyOptions,
 } from 'n8n-workflow';
@@ -603,7 +605,7 @@ export class Abyssale implements INodeType {
 						pairedItem: i,
 					});
 				} else {
-					throw error;
+					throw new NodeApiError(this.getNode(), error as JsonObject);
 				}
 			}
 		}

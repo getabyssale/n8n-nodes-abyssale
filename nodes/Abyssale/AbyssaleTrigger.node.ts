@@ -19,6 +19,7 @@ export class AbyssaleTrigger implements INodeType {
 		group: ['trigger'],
 		version: 1,
 		description: 'Handle Abyssale events via webhooks',
+		subtitle: '={{$parameter["event"]}}',
 		defaults: {
 			name: 'Abyssale Trigger',
 		},
