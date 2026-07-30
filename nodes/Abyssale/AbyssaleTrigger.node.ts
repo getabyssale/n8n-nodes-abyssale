@@ -136,7 +136,8 @@ export class AbyssaleTrigger implements INodeType {
 				if (webhookData.webhookId !== undefined) {
 					try {
 						await abyssaleApiRequest.call(this, 'DELETE', `/unsubscribe/${webhookData.webhookId}` , {}, {},"https://webhook.abyssale.com");
-					} catch {
+					} catch (error) {
+						this.logger.error('Failed to delete Abyssale webhook', { error });
 						return false;
 					}
 
